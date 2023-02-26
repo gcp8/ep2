@@ -129,6 +129,26 @@ r = [
   ["nnn","b"]
 ]
 
+input = [ "aaa" ]
+G = [["A","S"], ["A","aS"], ["S","a"], ["S","aA"]]
+# resultado esperado: cadeia aceita (A->aS->aaA->aaS->aaa)
+
+input = [ "bbab" ]
+G = [["S","aAa"], ["A","a"], ["A","ba"]]
+# resultado esperado: cadeia rejeitada
+
+input = [ "aSb" ]
+G = [["S","aA"], ["S","A"], ["A","S"], ["A","Ab"]]
+# resultado esperado: cadeia aceita (S->aA->aAb->aSb)
+
+input = ["aabab"]
+G = [["A","S"], ["A","aS"], ["A","abS"], ["S","A"], ["S","aS"], ["S","b"]]
+# resultado esperado: cadeia aceita (A->aS->aA->aabS->aabaS->aabab)
+
+input = ["aaabaa"]
+G = [["A","S"], ["A","aS"], ["A","abS"], ["S","A"], ["S","aS"]]
+# resultado esperado: cadeia rejeitada
+
 
 lista = Reconhecedor.usa_regra(input,["AA","bvbcvb"])
 IO.inspect lista
